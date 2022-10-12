@@ -353,7 +353,7 @@ if __name__ == "__main__":
     #获取星座
     astro = config["astro"]
     # 获取词霸每日金句
-    note_ch,note_en = get_ciba()
+    #note_ch,note_en = get_ciba()
     #彩虹屁
     pipi = caihongpi()
     #健康小提示
