@@ -105,7 +105,7 @@ def get_weather(province, city):
 
 
 # 词霸每日一句
-def get_ciba_en():
+def get_ciba():
     if (Whether_Eng != False):
         try:
             url = "http://open.iciba.com/dsapi/"
@@ -115,25 +115,9 @@ def get_ciba_en():
                               'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
             }
             r = get(url, headers=headers)
+            note_ch = r.json()["note"]
             note_en = r.json()["content"]
-            return note_en
-        except:
-            return ("词霸API调取错误")
-
-
-# 词霸每日一句
-def get_ciba_ch():
-    if (Whether_Eng != False):
-        try:
-            url = "http://open.iciba.com/dsapi/"
-            headers = {
-                'Content-Type': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                              'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-            }
-            r = get(url, headers=headers)
-            note_ch = r.json()["text"]
-            return note_ch
+            return note_ch,note_en
         except:
             return ("词霸API调取错误")
 
@@ -374,8 +358,7 @@ if __name__ == "__main__":
     # 获取星座
     astro = config["astro"]
     # 获取词霸每日金句
-    note_ch = get_ciba_ch()
-    note_en = get_ciba_en()
+    note_ch,note_en = get_ciba()
     # 彩虹屁
     pipi = caihongpi()
     # 健康小提示
