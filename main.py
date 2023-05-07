@@ -185,8 +185,8 @@ def lizhi():
             headers = {'Content-type': 'application/x-www-form-urlencoded'}
             conn.request('POST', '/lzmy/index', params, headers)
             res = conn.getresponse()
-            data = res.read()
-            data = json.loads(data)
+            result = res.read()
+            data = json.loads(result)
             return data["newslist"][0]["saying"]
         except:
             return ("励志古言API调取错误，请检查API是否正确申请或是否填写正确")
